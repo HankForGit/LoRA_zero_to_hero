@@ -34,8 +34,8 @@ class LoRA_linear(nn.Module):
 
 #creating answer
 
-input_size = 8
-output_size = 6
+input_size = 80
+output_size = 60
 rank = 2
 lora_alpha = 2
 
