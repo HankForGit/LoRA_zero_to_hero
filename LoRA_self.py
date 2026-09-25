@@ -104,8 +104,8 @@ for name, parameter in model.named_parameters():
 
 #save and merge
 adapter = {
-    "A": model.A,
-    "B": model.B,
+    "A": model.A.detach().cpu(),
+    "B": model.B.detach().cpu(),
     "rank" : rank,
     "alpha": lora_alpha
 }
@@ -121,4 +121,4 @@ with torch.no_grad():
     lora_output = model(x_train)
     max_diff = (lora_output - merged_output).abs().max()
 
-print(f"Maximum difference between training model and merged model is {max_diff}")
+print(f"Maximum difference between training model and merged model is {max_diff.item()}")
